@@ -73,7 +73,16 @@ async def duck(ctx):
     image_url = get_duck_image_url()
     await ctx.send(image_url)
 
+@bot.command()
+async def futbol(ctx):
+    files = os.listdir('futbol')
+    selected = random.choice(files)    
+    with open(f'futbol/{selected}', 'rb') as f:
+        # Dönüştürülen Discord kütüphane dosyasını bu değişkende saklayalım!
+        picture = discord.File(f)
+   # Daha sonra bu dosyayı bir parametre olarak gönderebiliriz!
+    await ctx.send(file=picture)
+
 bot.run("")
 
-
-#put your token for discord in line 76
+#put your own discord bot token in line 86 to run the code
